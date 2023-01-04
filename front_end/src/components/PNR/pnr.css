@@ -1,0 +1,44 @@
+*{
+    box-sizing: border-box;
+}form{
+    display: block;
+    margin-top: 0;
+}
+
+.container{
+    margin-top: -20rem;
+
+}
+.row_container input{
+   width: 40%;
+   background-color: lightgray;
+   height: 3rem;
+   border-radius: 5px;
+   font-size: 20px;
+  
+}
+
+.row_container button{
+    width: 15%;
+    height: 3rem;
+    display: inline-block;
+    background-color: #7b38d8;
+    
+    width: 200px;
+    color: #ffffff;
+    text-align: center;
+    border: 4px double #cccccc;
+    border-radius: 10px;
+    
+    cursor: pointer;
+    -webkit-transition: all 0.5s; /* add this line, chrome, safari, etc */
+    -moz-transition: all 0.5s; /* add this line, firefox */
+    -o-transition: all 0.5s; /* add this line, opera */
+    transition: all 0.5s; /* add this line */
+  }
+  button:hover {
+    background-color: green;
+  }
+
+    
+
