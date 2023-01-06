@@ -1,38 +1,93 @@
-import express from "express";
-import cors from "cors";
-import { Pool } from "pg";
-import dotenv from "dotenv";
-import bodyParser from "body-parser";
-// import Tableroutes from './src/routes/index.js'
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const router = require("./routes/routes");
+// require("dotenv").config();
 
-const app = express();
-dotenv.config();
+// dotenv.config();
 const port = process.env.PORT || 2000;
 
-app.use(bodyParser.json({ limit: "30mb", extended: true }));
-app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-
+const app = express();
 app.use(cors());
+app.use(bodyParser.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 
-app.get("/", (req, res) => {
-  res.status(200).send("server running...");
+app.get("/", (request, response) => {
+  response.json({
+    message: "Welcome to the Electricity Billing System API",
+    routes: [
+      {
+        route: "/users",
+        methods: ["GET", "POST"],
+      },
+      {
+        route: "/users/:id",
+        methods: ["GET", "PUT", "DELETE"],
+      },
+      {
+        route: "/bills",
+        methods: ["GET", "POST"],
+      },
+      {
+        route: "/bills/:id",
+        methods: ["GET", "PUT", "DELETE"],
+      },
+      {
+        route: "/bills/consumer/:id",
+        methods: ["GET"],
+      },
+      {
+        route: "/billstatus",
+        methods: ["GET", "POST"],
+      },
+      {
+        route: "/billstatus/:id",
+        methods: ["GET", "PUT", "DELETE"],
+      },
+      {
+        route: "/complaint",
+        methods: ["GET", "POST"],
+      },
+      {
+        route: "/complaint/:id",
+        methods: ["GET", "PUT", "DELETE"],
+      },
+      {
+        route: "/complaint/consumer/:id",
+        methods: ["GET"],
+      },
+      {
+        route: "/complaint/resolve/:id",
+        methods: ["PUT"],
+      },
+      {
+        route: "/admin",
+        methods: ["GET", "POST"],
+      },
+      {
+        route: "/admin/:id",
+        methods: ["GET", "PUT", "DELETE"],
+      },
+      {
+        route: "/admin/login",
+        methods: ["POST"],
+      },
+      {
+        route: "/users/login",
+        methods: ["POST"],
+      },
+    ],
+  });
 });
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+app.use("/", router);
+
+app.listen(port, () => {
+  console.log(`App running on port ${port}.`);
 });
 
-pool.connect((err, connection) => {
-  if (err) console.log(err);
-  console.log("Database connected successfully");
-});
-
-app.listen(2000, () => {
-  console.log("Port Listening", 2000);
-});
-
-const db = {
-  query: (text, params) => pool.query(text, params),
-};
-
-export default db;
+module.exports = app;
