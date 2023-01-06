@@ -4,6 +4,7 @@ import Home from "./components/Home/Home";
 import Book from "./components/Book/Book";
 import PNR from "./components/PNR/PNR";
 import Login from "./components/Login/Login";
+import Signup from "./components/Signup/Signup";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 
@@ -57,6 +58,19 @@ const App = () => {
                             <Navbar /> 
                             <Home />
                             <Login />
+                        </>
+                        }
+                    />
+                </Routes>
+
+                <Routes>
+                    <Route
+                        path="/signup"
+                        element={
+                        <>
+                            <Navbar /> 
+                            <Home />
+                            <Signup />
                         </>
                         }
                     />

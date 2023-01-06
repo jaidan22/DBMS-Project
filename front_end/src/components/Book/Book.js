@@ -2,6 +2,7 @@ import React from "react";
 import Home from "../Home/Home";
 import Navbar from "../Navbar/Navbar";
 import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 import "./Book.css";
 
 const Book = () => {
@@ -16,7 +17,15 @@ const Book = () => {
                         <option value="3">Venad Express</option>
                     </Form.Select>
                 </div>  
+
+                <div className="form-submit_btn">
+                    <Button variant="warning" size="lg">
+                        Submit
+                    </Button>{' '}
+                </div>
             </div>
+
+
         </>
      );
 }
