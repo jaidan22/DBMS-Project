@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import BookCard from "../BookCard/BookCard";
+import "./CardPanel.css";
 
 const CardPanel = () => {
     const [trains, setTrains] = useState([]);

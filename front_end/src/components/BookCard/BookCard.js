@@ -11,12 +11,13 @@ const BookCard = ({props}) => {
     return ( 
         <>
             <div className="card">
-                <Card style={{ width: '18rem' }}>
+                <Card style={{ width: '90%' }}>
+                    <div className="card_body">
                     <Card.Body>
                         <Card.Title>{train_name}</Card.Title>
                         <Card.Subtitle className="mb-2 text-muted">{train_id}</Card.Subtitle>
                         <Card.Text>
-                            <div>
+                            <div className="text_arr">
                                 <p>{source}</p>
                                 <p>{destination}</p>
                                 <p>{cost}</p>
@@ -25,6 +26,7 @@ const BookCard = ({props}) => {
                         </Card.Text>
                         <Card.Link href="#">Book Now</Card.Link>
                     </Card.Body>
+                    </div>
                 </Card>
             </div>
         </>

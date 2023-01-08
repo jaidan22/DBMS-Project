@@ -11,3 +11,24 @@
     left: 35%;
     width: 35%;
 }
+
+.card {
+    margin: 40px;
+    background-color: #484848;
+    top: 0;
+    
+}
+.card .card_body{
+    color: white;
+}
+
+
+
+
+.card .card_body .text_arr{
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    color: white;
+    
+}
