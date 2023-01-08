@@ -1,12 +1,13 @@
 import React from "react";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Home/Home";
-import Book from "./components/Book/Book";
+import BookCard from "./components/BookCard/BookCard";
 import PNR from "./components/PNR/PNR";
 import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
+import CardPanel from "./components/CardPanel/CardPanel";
 
 
 const App = () => {
@@ -31,7 +32,7 @@ const App = () => {
                         <>
                             <Navbar /> 
                             <Home />
-                            <Book />
+                            <CardPanel />
                         </>
                         }
                     />
