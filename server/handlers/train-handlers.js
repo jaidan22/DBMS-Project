@@ -2,21 +2,22 @@ const pool = require("../psql");
 
 const getTrains = (req, res) => {
   // console.log(req);
-  pool.query("SELECT * FROM trains", (error, results) => {
-    if (error) {
-      return res.status(400).json({
-        success: false,
-        error: error.name,
-        message: error.message,
-      });
+  pool.query(
+    "SELECT t.train_id,t.train_name,s.source,s.destination,t.cost FROM trains t,train_schedules s where t.train_id=s.train_id",
+    (error, results) => {
+      if (error) {
+        return res.status(400).json({
+          success: false,
+          error: error.name,
+          message: error.message,
+        });
+      }
+      res.status(200).json(results.rows);
     }
-    res.status(200).json(results.rows);
-  });
+  );
 };
 
 const getTrainById = (req, res) => {
-  // console.log(req.params.id);
-  res.send("jslkdfjslf");
   const id = parseInt(req.params.id);
 
   pool.query(
@@ -55,7 +56,6 @@ const createTrain = (req, res) => {
 };
 
 const updateTrain = (req, res) => {
-  // const id = parseInt(req.params.id);
   const { train_id, train_name, cost, total_seats } = req.body;
 
   pool.query(
@@ -92,25 +92,6 @@ const deleteTrain = (req, res) => {
     }
   );
 };
-
-// const loginUser = (req, res) => {
-//   const { username, password } = req.body;
-
-//   pool.query(
-//     "SELECT consumer_id, username, address, phone FROM trains WHERE username=$1 AND password=$2",
-//     [username, password],
-//     (error, results) => {
-//       if (error) {
-//         return res.status(400).json({
-//           success: false,
-//           error: error.name,
-//           message: error.message,
-//         });
-//       }
-//       res.status(200).json(results.rows);
-//     }
-//   );
-// };
 
 module.exports = {
   getTrains,

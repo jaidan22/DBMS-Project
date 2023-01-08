@@ -1,7 +1,6 @@
 const pool = require("../psql");
 
 const getUsers = (req, res) => {
-  // console.log(req);
   pool.query("SELECT * FROM train_user", (error, results) => {
     if (error) {
       return res.status(400).json({
@@ -35,25 +34,25 @@ const getUserById = (req, res) => {
   );
 };
 
-const updateUser = (req, res) => {
-  // const id = parseInt(req.params.id);
-  const { u_id, name, age, phone, email } = req.body;
+// const updateUser = (req, res) => {
+//   // const id = parseInt(req.params.id);
+//   const { u_id, name, age, phone, email } = req.body;
 
-  pool.query(
-    "UPDATE train_user SET name = $2, age = $3, phone = $4, email = $5 WHERE u_id = $1",
-    [u_id, name, age, phone, email],
-    (error, results) => {
-      if (error) {
-        return res.status(400).json({
-          success: false,
-          error: error.name,
-          message: error.message,
-        });
-      }
-      res.status(200).send(`User modified with ID: ${results}`);
-    }
-  );
-};
+//   pool.query(
+//     "UPDATE train_user SET name = $2, age = $3, phone = $4, email = $5 WHERE u_id = $1",
+//     [u_id, name, age, phone, email],
+//     (error, results) => {
+//       if (error) {
+//         return res.status(400).json({
+//           success: false,
+//           error: error.name,
+//           message: error.message,
+//         });
+//       }
+//       res.status(200).send(results.rows);
+//     }
+//   );
+// };
 
 const deleteUser = (req, res) => {
   const id = req.body.id;
@@ -69,7 +68,7 @@ const deleteUser = (req, res) => {
           message: error.message,
         });
       }
-      res.status(200).send(`User deleted with ID: ${id},   ${results}`);
+      res.status(200).send(`User deleted with ID: ${id}`);
     }
   );
 };
@@ -88,26 +87,26 @@ const loginUser = (req, res) => {
           message: error.message,
         });
       }
-      res.status(200).json(results.rows);
+      res.status(200).json(results.rows[0].u_id);
     }
   );
 };
 
 const registerUser = (req, res) => {
-  const { username, password, name, age, phone, email } = req.body;
+  const { username, password, name } = req.body;
 
   pool.query(
-    "INSERT INTO train_user (name, age, phone,email,username,password) VALUES ($1, $2, $3, $4, $5, $6)",
-    [name, age, phone, email, username, password],
+    "INSERT INTO train_user (name,username,password) VALUES ($1, $2, $3)",
+    [name, username, password],
     (error, results) => {
       if (error) {
         return res.status(400).json({
           success: false,
           error: error.name,
-          message: error.message,
+          message: "user already exists",
         });
       }
-      res.status(200).json("username already exists");
+      res.status(200).json(results);
     }
   );
 };
@@ -115,7 +114,7 @@ const registerUser = (req, res) => {
 module.exports = {
   getUsers,
   getUserById,
-  updateUser,
+  // updateUser,
   deleteUser,
   registerUser,
   loginUser,

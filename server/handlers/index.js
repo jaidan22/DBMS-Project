@@ -9,11 +9,18 @@ const {
 const {
   getUsers,
   getUserById,
-  updateUser,
+  // updateUser,
   deleteUser,
   registerUser,
   loginUser,
 } = require("./user-handlers");
+
+const {
+  getPassengers,
+  getPassengerById,
+  cancelPassenger,
+  addPassenger,
+} = require("./passenger-handlers");
 
 module.exports = {
   getTrains,
@@ -23,8 +30,12 @@ module.exports = {
   deleteTrain,
   getUsers,
   getUserById,
-  updateUser,
+  // updateUser,
   deleteUser,
   registerUser,
   loginUser,
+  getPassengers,
+  getPassengerById,
+  cancelPassenger,
+  addPassenger,
 };
