@@ -17,6 +17,10 @@
   background-color: #484848;
   top: 0;
 }
+.book-card {
+  width: 70vw;
+  max-width: 1200px;
+}
 .card .card_body {
   color: white;
 }
@@ -26,4 +30,46 @@
   justify-content: space-around;
   font-size: 20px;
   color: white;
+}
+
+.card-title {
+  margin: 0 !important;
+  font-size: 2rem;
+}
+.card-subtitle {
+  color: rgba(238, 238, 238, 0.794) !important;
+  margin: 0 !important;
+  font-size: 1.5rem;
+}
+
+.text_arr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.book-btn {
+  padding: 5px 10px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  transform: background-color 1s;
+}
+
+.flex-ctn {
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.text_arr > p {
+  min-width: 137px;
+}
+
+.card-text {
+  margin: 0 !important;
+}
+
+.book-btn:hover {
+  background-color: rgba(255, 255, 255, 1);
 }

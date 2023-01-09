@@ -9,7 +9,7 @@ const Navbar = () => {
   };
 
   return (
-    <div>
+    <div className='navbar'>
       <header>
         <img src="https://www.clipartmax.com/png/middle/225-2259507_train-logo-train-logo-black-white.png" />
         <nav>

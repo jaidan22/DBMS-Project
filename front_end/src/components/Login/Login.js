@@ -32,6 +32,7 @@ export default function Login() {
         const id = res.data;
         setuserId(id);
         console.log(userid);
+        alert('Logged In');
         stoploading();
       })
       .catch((err) => {
