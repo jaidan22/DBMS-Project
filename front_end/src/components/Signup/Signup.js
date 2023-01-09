@@ -1,28 +1,76 @@
-import React from "react";
-import "./signup.css";
-
-import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
+import React, { useContext, useRef, useState } from 'react';
+import './signup.css';
+import { Col, Button, Row, Container, Card, Form } from 'react-bootstrap';
+import axios from 'axios';
+import history from '../../history';
+import { UserContext } from '../../context';
 
 export default function Login() {
+  const { userid } = useContext(UserContext);
+  console.log(userid)
+
+  const [name, setname] = useState('');
+  // const [phone, setPhone] = useState('');
+  const [username, setusername] = useState('');
+  const [password, setpassword] = useState('');
+  const loadRef = useRef();
+
+  const loading = () => {
+    loadRef.current.style.opacity = 1;
+    loadRef.current.style.visibility = 'visible';
+  };
+
+  const stoploading = () => {
+    loadRef.current.style.opacity = 0;
+    loadRef.current.style.visibility = 'hidden';
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(userid);
+    loading();
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/register`, {
+        username,
+        password,
+        name,
+      })
+      .then((res) => {
+        console.log(res);
+        history.push('/');
+        stoploading();
+      })
+      .catch((err) => {
+        console.log(err);
+        stoploading();
+      });
+  };
+
   return (
     <div>
-      <Container>
-        <Row className="vh-100 d-flex justify-content-center align-items-center">
-          <Col md={8} lg={6} xs={12}>
+      <div className="loader-container" ref={loadRef}>
+        <div className="loader"></div>
+      </div>
+
+      <div className="signup_container">
+        <Row className="d-flex justify-content-center align-items-center">
+          <Col md={10} lg={10} xs={12}>
             <div className="border border-3 border-warning"></div>
             <Card className="shadow">
               <Card.Body>
                 <div className="mb-3 mt-md-4">
-                  <h2 className="fw-bold mb-2 text-uppercase ">
-                    REGISTER TO INDIAN RAILWAYS
-                  </h2>
+                  <h2 className="fw-bold mb-2 text-uppercase ">REGISTER</h2>
                   <div className="mb-3">
                     <Form>
                       <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label className="text-center">
-                          Email address
-                        </Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Label className="text-center">Name</Form.Label>
+                        <Form.Control
+                          type="email"
+                          placeholder="John Doe"
+                          onChange={(e) => {
+                            setname(e.target.value);
+                          }}
+                        />
                       </Form.Group>
 
                       <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -32,6 +80,9 @@ export default function Login() {
                         <Form.Control
                           type="email"
                           placeholder="Enter username"
+                          onChange={(e) => {
+                            setusername(e.target.value);
+                          }}
                         />
                       </Form.Group>
 
@@ -40,21 +91,21 @@ export default function Login() {
                         controlId="formBasicPassword"
                       >
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
-                      </Form.Group>
-
-                      <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label className="text-center">
-                          Phone number
-                        </Form.Label>
                         <Form.Control
-                          type="email"
-                          placeholder="Enter phone number"
+                          type="password"
+                          placeholder="Password"
+                          onChange={(e) => {
+                            setpassword(e.target.value);
+                          }}
                         />
                       </Form.Group>
 
                       <div className="d-grid">
-                        <Button variant="warning" type="submit">
+                        <Button
+                          variant="warning"
+                          type="submit"
+                          onClick={(e) => handleSubmit(e)}
+                        >
                           Sign Up
                         </Button>
                       </div>
@@ -65,7 +116,7 @@ export default function Login() {
             </Card>
           </Col>
         </Row>
-      </Container>
+      </div>
     </div>
   );
 }
