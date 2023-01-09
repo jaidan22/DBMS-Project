@@ -1,5 +1,5 @@
-import React from 'react'
-import './signup.css'
+import React from "react";
+import "./signup.css";
 
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 
@@ -13,7 +13,9 @@ export default function Login() {
             <Card className="shadow">
               <Card.Body>
                 <div className="mb-3 mt-md-4">
-                  <h2 className="fw-bold mb-2 text-uppercase ">REGISTER TO INDIAN RAILWAYS</h2>
+                  <h2 className="fw-bold mb-2 text-uppercase ">
+                    REGISTER TO INDIAN RAILWAYS
+                  </h2>
                   <div className="mb-3">
                     <Form>
                       <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -27,7 +29,10 @@ export default function Login() {
                         <Form.Label className="text-center">
                           Username
                         </Form.Label>
-                        <Form.Control type="email" placeholder="Enter username" />
+                        <Form.Control
+                          type="email"
+                          placeholder="Enter username"
+                        />
                       </Form.Group>
 
                       <Form.Group
@@ -42,7 +47,10 @@ export default function Login() {
                         <Form.Label className="text-center">
                           Phone number
                         </Form.Label>
-                        <Form.Control type="email" placeholder="Enter phone number" />
+                        <Form.Control
+                          type="email"
+                          placeholder="Enter phone number"
+                        />
                       </Form.Group>
 
                       <div className="d-grid">

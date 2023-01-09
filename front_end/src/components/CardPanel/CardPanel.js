@@ -4,27 +4,26 @@ import BookCard from "../BookCard/BookCard";
 import "./CardPanel.css";
 
 const CardPanel = () => {
-    const [trains, setTrains] = useState([]);
+  const [trains, setTrains] = useState([]);
 
-    useEffect(() =>
-        axios.get(`${process.env.REACT_APP_API_URL}/trains`)
-        .then(res => {
-            const traindata = res.data;
-            setTrains(traindata);
-        })
-    , [] )
+  useEffect(
+    () =>
+      axios.get(`${process.env.REACT_APP_API_URL}/trains`).then((res) => {
+        const traindata = res.data;
+        setTrains(traindata);
+      }),
+    []
+  );
 
-    return ( 
-        <>
-            <div className="cardpanel">
-                {
-                    trains.map((train) =>
-                        <BookCard  props={train}/>
-                    )
-                }   
-            </div>
-        </>
-     );
-}
- 
+  return (
+    <>
+      <div className="cardpanel">
+        {trains.map((train) => (
+          <BookCard props={train} />
+        ))}
+      </div>
+    </>
+  );
+};
+
 export default CardPanel;
