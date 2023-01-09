@@ -3,7 +3,7 @@ const pool = require("../psql");
 const getTrains = (req, res) => {
   // console.log(req);
   pool.query(
-    "SELECT t.train_id,t.train_name,s.source,s.destination,t.cost FROM trains t,train_schedules s where t.train_id=s.train_id",
+    "SELECT t.train_id,t.train_name,s.source,s.destination,s.avail_seat,t.cost FROM trains t,train_schedules s where t.train_id=s.train_id",
     (error, results) => {
       if (error) {
         return res.status(400).json({
