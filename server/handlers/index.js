@@ -4,7 +4,8 @@ const {
   createTrain,
   updateTrain,
   deleteTrain,
-  getSchById
+  getSchById,
+  decSeat
 } = require("./train-handlers");
 
 const {
@@ -21,6 +22,7 @@ const {
   getPassengerById,
   cancelPassenger,
   addPassenger,
+  getPassengerByPNR
 } = require("./passenger-handlers");
 
 module.exports = {
@@ -39,5 +41,7 @@ module.exports = {
   getPassengers,
   getPassengerById,
   cancelPassenger,
+  decSeat,
   addPassenger,
+  getPassengerByPNR
 };
