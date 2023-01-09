@@ -1,11 +1,11 @@
-import React from "react";
-import Home from "../Home/Home";
-import Navbar from "../Navbar/Navbar";
-import "./pnr.css";
+import React from 'react';
+import Home from '../Home/Home';
+import Navbar from '../Navbar/Navbar';
+import './pnr.css';
 
 const PNR = () => {
   return (
-    <div className="container">
+    <div className="pnr_container">
       <form>
         <div className="row_container">
           <input
@@ -13,10 +13,10 @@ const PNR = () => {
             id="pnr_text"
             maxLength="10"
             minLength="10"
-            placeholder="Enter 10 digit PNR Number"
+            placeholder="Enter Booking ID"
           />
           <button type="submit" className="pnr-btn">
-            Check PNR Status
+            Check Booking Status
           </button>
         </div>
       </form>

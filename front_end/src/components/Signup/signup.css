@@ -3,3 +3,17 @@
   top: 300px;
   left: 350px;
 }
+
+.signup_container {
+  position: absolute;
+  top: 50% !important;
+  right: 50% !important;
+  transform: translate(50%, -50%) !important;
+  width: 70vw;
+  max-width: 700px;
+}
+
+.row{
+  margin: 0 !important;
+  width: 100% !important;
+}

@@ -5,3 +5,7 @@
   -o-background-size: cover;
   background-size: cover;
 }
+
+.home{
+  background: rgba(238, 238, 238, 0.857);
+}
