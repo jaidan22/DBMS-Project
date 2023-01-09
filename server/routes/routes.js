@@ -8,6 +8,7 @@ router.get("/journey/:id", db.getSchById);
 router.post("/trains", db.createTrain);
 router.put("/train", db.updateTrain);
 router.delete("/train", db.deleteTrain);
+router.put("/decseat", db.decSeat);
 
 router.get("/users", db.getUsers);
 router.get("/user/:id", db.getUserById);
@@ -17,8 +18,8 @@ router.post("/login", db.loginUser);
 
 router.get("/passengers", db.getPassengers);
 router.get("/passenger/:id", db.getPassengerById);
-router.delete("/cancel", db.cancelPassenger);
+router.get("/passengerpnr/:pnr", db.getPassengerByPNR);
+router.post("/cancel", db.cancelPassenger);
 router.post("/book", db.addPassenger);
-
 
 module.exports = router;
