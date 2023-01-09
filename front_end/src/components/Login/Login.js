@@ -3,12 +3,15 @@ import './login.css';
 import { Col, Button, Row, Container, Card, Form } from 'react-bootstrap';
 import { UserContext } from '../../context';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Login() {
   const { userid, setuserId } = useContext(UserContext);
   const [username, setusername] = useState('');
   const [password, setpassword] = useState('');
   const loadRef = useRef();
+  let navigate = useNavigate();
 
   const loading = () => {
     loadRef.current.style.opacity = 1;
@@ -34,6 +37,7 @@ export default function Login() {
         console.log(userid);
         alert('Logged In');
         stoploading();
+        return navigate('/book');
       })
       .catch((err) => {
         console.log(err);

@@ -6,13 +6,16 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './BookCard.css';
 import { UserContext } from '../../context';
+import { useNavigate } from 'react-router-dom';
 
 const BookCard = ({ props }) => {
-  const { train_name, train_id, source, destination, cost, avail_seat } = props;
+  const { train_name, train_id, source, destination, cost, avail_seat,sch_id } = props;
   const { userid } = useContext(UserContext);
+  let navigate = useNavigate();
 
   const book = () => {
     if (!userid) return alert('Login to book trains');
+    return navigate(`/book/train/${sch_id}`);
   };
 
   return (

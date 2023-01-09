@@ -2,18 +2,20 @@ import React, { useContext, useRef, useState } from 'react';
 import './signup.css';
 import { Col, Button, Row, Container, Card, Form } from 'react-bootstrap';
 import axios from 'axios';
-import history from '../../history';
 import { UserContext } from '../../context';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
   const { userid } = useContext(UserContext);
-  console.log(userid)
+  // console.log(userid)
 
   const [name, setname] = useState('');
   // const [phone, setPhone] = useState('');
   const [username, setusername] = useState('');
   const [password, setpassword] = useState('');
   const loadRef = useRef();
+  let navigate = useNavigate();
+
 
   const loading = () => {
     loadRef.current.style.opacity = 1;
@@ -37,8 +39,8 @@ export default function Login() {
       })
       .then((res) => {
         console.log(res);
-        history.push('/');
         stoploading();
+        return navigate('/login');
       })
       .catch((err) => {
         console.log(err);
@@ -62,7 +64,7 @@ export default function Login() {
                   <h2 className="fw-bold mb-2 text-uppercase ">REGISTER</h2>
                   <div className="mb-3">
                     <Form>
-                      <Form.Group className="mb-3" controlId="formBasicEmail">
+                      <Form.Group className="mb-3" controlId="formBasicText">
                         <Form.Label className="text-center">Name</Form.Label>
                         <Form.Control
                           type="email"
@@ -73,7 +75,7 @@ export default function Login() {
                         />
                       </Form.Group>
 
-                      <Form.Group className="mb-3" controlId="formBasicEmail">
+                      <Form.Group className="mb-3" controlId="formBasicText">
                         <Form.Label className="text-center">
                           Username
                         </Form.Label>

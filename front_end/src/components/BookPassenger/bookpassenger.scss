@@ -1,0 +1,20 @@
+.d-grid {
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 5px;
+}
+
+button.confirm {
+  background-color: rgb(81, 116, 96);
+  color: white;
+}
+button.confirm:hover {
+  background-color: rgba(81, 116, 96, 0.542);
+}
+button.cancel {
+  background-color: rgb(201, 95, 95);
+  color: white;
+}
+button.cancel:hover {
+  background-color: rgb(210, 27, 27);
+  color: white;
+}
