@@ -9,7 +9,21 @@ import { UserContext } from '../../context';
 import { useNavigate } from 'react-router-dom';
 
 const BookCard = ({ props }) => {
-  const { train_name, train_id, source, destination, cost, avail_seat,sch_id } = props;
+  const {
+    train_name,
+    train_id,
+    source,
+    destination,
+    cost,
+    avail_seat,
+    sch_id,
+    start_time,
+    end_time,
+  } = props;
+
+  const d1 = new Date(start_time);
+  const d2 = new Date(end_time);
+
   const { userid } = useContext(UserContext);
   let navigate = useNavigate();
 
@@ -32,22 +46,31 @@ const BookCard = ({ props }) => {
               </div>
               <Card.Text>
                 <div className="text_arr">
-                  <p>Source</p>
-                  <p>Destination</p>
-                  <p>Cost</p>
-                  <p>Available Seats</p>
-                </div>
-              </Card.Text>
-              <Card.Text>
-                <div className="text_arr">
-                  <p>{source}</p>
-                  <p>{destination}</p>
-                  <p>{cost}</p>
                   <p>
-                    {avail_seat > 1 ? `GN ${avail_seat}` : `WL ${avail_seat}`}
+                    {d1.getHours()}:{d1.getMinutes()} |{' '}
+                    {d1.toString().split(' ')[0]},{d1.toString().split(' ')[2]}{' '}
+                    {d1.toString().split(' ')[1]} | {source}
+                  </p>
+                  <p>
+                    {d2.getHours()}:{d2.getMinutes()} |{' '}
+                    {d2.toString().split(' ')[0]},{d2.toString().split(' ')[2]}{' '}
+                    {d2.toString().split(' ')[1]} | {destination}
                   </p>
                 </div>
               </Card.Text>
+
+              <Card.Text>
+                <div className="text_arr">
+                  <p>Cost : {cost}</p>
+                  <p>
+                    Seat Availability :
+                    {avail_seat > 0
+                      ? ` GN ${avail_seat}`
+                      : ' WL' + avail_seat * -1 + 1}
+                  </p>
+                </div>
+              </Card.Text>
+
               <button
                 className="book-btn"
                 // disabled={userid ? false : true}

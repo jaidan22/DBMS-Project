@@ -16,54 +16,15 @@ const App = () => {
       <Navbar />
       <Router>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Home />
-              </>
-            }
-          />
+          <Route path="/" element={<Home />} />
 
-          <Route
-            path="/book"
-            element={
-              <>
-                {/* <Home /> */}
-                <CardPanel />
-              </>
-            }
-          />
+          <Route path="/book" element={<CardPanel />} />
 
-          <Route
-            path="/PNR"
-            element={
-              <>
-                {/* <Home /> */}
-                <PNR />
-              </>
-            }
-          />
+          <Route path="/PNR" element={<PNR />} />
 
-          <Route
-            path="/Login"
-            element={
-              <>
-                {/* <Home /> */}
-                <Login />
-              </>
-            }
-          />
+          <Route path="/Login" element={<Login />} />
 
-          <Route
-            path="/signup"
-            element={
-              <>
-                {/* <Home /> */}
-                <Signup />
-              </>
-            }
-          />
+          <Route path="/signup" element={<Signup />} />
 
           <Route path="/book/train/:id" element={<Passenger />} />
         </Routes>
