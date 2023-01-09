@@ -16,6 +16,7 @@ const Passenger = () => {
   const [email, setemail] = useState('');
   const [phone, setphone] = useState('');
   const [sch_id, setSchid] = useState();
+  const [seat, setseat] = useState();
   const u_id = Number(userid);
   const loadRef = useRef();
 
@@ -42,15 +43,22 @@ const Passenger = () => {
       phone: Number(phone),
       sch_id,
       u_id,
+      seat_no: Number(seat),
     };
     // console.log(body);
     loading();
     axios
       .post(`${process.env.REACT_APP_API_URL}/book`, body)
       .then((res) => {
-        console.log(res);
-        stoploading();
-        // return navigate('/login');
+        console.log(res.data);
+        axios
+          .put(`${process.env.REACT_APP_API_URL}/decseat`, {
+            id: sch_id,
+          })
+          .then(() => {
+            stoploading();
+            navigate('/');
+          });
       })
       .catch((err) => {
         console.log(err);
@@ -66,6 +74,7 @@ const Passenger = () => {
       );
       console.log(res.data[0]);
       setSchid(res.data[0].sch_id);
+      setseat(res.data[0].avail_seat);
       stoploading();
     };
     getTraindata();
@@ -155,13 +164,13 @@ const Passenger = () => {
                             >
                               Cancel
                             </Button>
-                            <Button
+                            {/* <Button
                               variant="warning"
                               type="submit"
-                              onClick={cancel}
+                              //   onClick={cancel}
                             >
                               Add Passenger
-                            </Button>
+                            </Button> */}
                             <Button
                               className="confirm"
                               variant="warning"
