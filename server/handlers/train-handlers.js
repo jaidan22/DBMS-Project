@@ -93,10 +93,30 @@ const deleteTrain = (req, res) => {
   );
 };
 
+const getSchById = (req, res) => {
+  const id = parseInt(req.params.id);
+  
+  pool.query(
+    "SELECT * FROM train_schedules WHERE sch_id = $1",
+    [id],
+    (error, results) => {
+      if (error) {
+        return res.status(400).json({
+          success: false,
+          error: error.name,
+          message: error.message,
+        });
+      }
+      res.status(200).send(results.rows);
+    }
+  );
+};
+
 module.exports = {
   getTrains,
   getTrainById,
   createTrain,
   updateTrain,
   deleteTrain,
+  getSchById,
 };

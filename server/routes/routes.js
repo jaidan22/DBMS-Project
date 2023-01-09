@@ -4,6 +4,7 @@ const db = require("../handlers/index");
 const router = express.Router();
 router.get("/trains", db.getTrains);
 router.get("/train/:id", db.getTrainById);
+router.get("/journey/:id", db.getSchById);
 router.post("/trains", db.createTrain);
 router.put("/train", db.updateTrain);
 router.delete("/train", db.deleteTrain);

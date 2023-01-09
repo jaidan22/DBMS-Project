@@ -4,6 +4,7 @@ const {
   createTrain,
   updateTrain,
   deleteTrain,
+  getSchById
 } = require("./train-handlers");
 
 const {
@@ -26,6 +27,7 @@ module.exports = {
   getTrains,
   getTrainById,
   createTrain,
+  getSchById,
   updateTrain,
   deleteTrain,
   getUsers,

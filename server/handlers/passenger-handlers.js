@@ -34,11 +34,11 @@ const getPassengerById = (req, res) => {
 };
 
 const addPassenger = (req, res) => {
-  const { seat_no, sch_id, email, age, phone, u_id } = req.body;
+  const { seat_no, sch_id, email, age, phone, u_id, name } = req.body;
 
   pool.query(
-    "INSERT INTO passengers (seat_no,sch_id,email,age,phone,u_id) VALUES ($1, $2, $3,$4, $5, $6)",
-    [seat_no, sch_id, email, age, phone, u_id],
+    "INSERT INTO passengers (seat_no,sch_id,email,age,phone,u_id,name) VALUES ($1, $2, $3,$4, $5, $6, $7)",
+    [seat_no, sch_id, email, age, phone, u_id, name],
     (error, results) => {
       if (error) {
         return res.status(400).json({
