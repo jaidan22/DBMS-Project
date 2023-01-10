@@ -112,6 +112,25 @@ const decSeat = (req, res) => {
   );
 };
 
+const incSeat = (req, res) => {
+  const id = req.body.id;
+
+  pool.query(
+    "UPDATE train_schedules SET avail_seat=avail_seat+1 WHERE sch_id = $1",
+    [id],
+    (error, results) => {
+      if (error) {
+        return res.status(400).json({
+          success: false,
+          error: error.name,
+          message: error.message,
+        });
+      }
+      res.status(200).send(results.rows);
+    }
+  );
+};
+
 const getSchById = (req, res) => {
   const id = parseInt(req.params.id);
 
@@ -135,6 +154,7 @@ module.exports = {
   getTrains,
   getTrainById,
   createTrain,
+  incSeat,
   updateTrain,
   deleteTrain,
   getSchById,

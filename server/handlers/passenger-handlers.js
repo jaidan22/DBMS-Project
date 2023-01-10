@@ -18,7 +18,7 @@ const getPassengerById = (req, res) => {
   const id = parseInt(req.params.id);
 
   pool.query(
-    "SELECT p.name,p.seat_no,p.p_id,ts.train_id,s.station_name as source, ss.station_name as destination FROM passenger p,train_schedules ts,stations s, stations ss WHERE p.sch_id=ts.sch_id AND p.u_id = $1 and ts.source = s.station_id and ts.destination = ss.station_id",
+    "SELECT p.name,p.seat_no,p.p_id,p.sch_id,ts.train_id,s.station_name as source, ss.station_name as destination FROM passenger p,train_schedules ts,stations s, stations ss WHERE p.sch_id=ts.sch_id AND p.u_id = $1 and ts.source = s.station_id and ts.destination = ss.station_id",
     [id],
     (error, results) => {
       if (error) {
@@ -94,7 +94,7 @@ const getPassengerByPNR = (req, res) => {
   const id = parseInt(req.params.pnr);
 
   pool.query(
-    "SELECT p.name,p.seat_no,p.p_id,ts.train_id,s.station_name as source, ss.station_name as destination FROM passenger p,train_schedules ts,stations s, stations ss WHERE p.sch_id=ts.sch_id AND p.p_id = $1 and ts.source = s.station_id and ts.destination = ss.station_id",
+    "SELECT p.name,p.seat_no,p.p_id,p.sch_id,ts.train_id,s.station_name as source, ss.station_name as destination FROM passenger p,train_schedules ts,stations s, stations ss WHERE p.sch_id=ts.sch_id AND p.p_id = $1 and ts.source = s.station_id and ts.destination = ss.station_id",
     [id],
     (error, results) => {
       if (error) {

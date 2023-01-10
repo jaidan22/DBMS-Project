@@ -5,7 +5,8 @@ const {
   updateTrain,
   deleteTrain,
   getSchById,
-  decSeat
+  decSeat,
+  incSeat,
 } = require("./train-handlers");
 
 const {
@@ -22,7 +23,7 @@ const {
   getPassengerById,
   cancelPassenger,
   addPassenger,
-  getPassengerByPNR
+  getPassengerByPNR,
 } = require("./passenger-handlers");
 
 module.exports = {
@@ -34,6 +35,7 @@ module.exports = {
   deleteTrain,
   getUsers,
   getUserById,
+  incSeat,
   // updateUser,
   deleteUser,
   registerUser,
@@ -43,5 +45,5 @@ module.exports = {
   cancelPassenger,
   decSeat,
   addPassenger,
-  getPassengerByPNR
+  getPassengerByPNR,
 };

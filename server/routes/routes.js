@@ -9,6 +9,7 @@ router.post("/trains", db.createTrain);
 router.put("/train", db.updateTrain);
 router.delete("/train", db.deleteTrain);
 router.put("/decseat", db.decSeat);
+router.put("/incseat", db.incSeat);
 
 router.get("/users", db.getUsers);
 router.get("/user/:id", db.getUserById);
