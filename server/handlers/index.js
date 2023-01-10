@@ -7,6 +7,8 @@ const {
   getSchById,
   decSeat,
   incSeat,
+  searchByStation,
+  getStations
 } = require("./train-handlers");
 
 const {
@@ -43,7 +45,9 @@ module.exports = {
   getPassengers,
   getPassengerById,
   cancelPassenger,
+  searchByStation,
   decSeat,
   addPassenger,
   getPassengerByPNR,
+  getStations
 };

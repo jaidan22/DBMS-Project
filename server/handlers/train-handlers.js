@@ -17,6 +17,20 @@ const getTrains = (req, res) => {
   );
 };
 
+const getStations = (req, res) => {
+  // console.log(req);
+  pool.query("SELECT station_name from stations", (error, results) => {
+    if (error) {
+      return res.status(400).json({
+        success: false,
+        error: error.name,
+        message: error.message,
+      });
+    }
+    res.status(200).json(results.rows);
+  });
+};
+
 const getTrainById = (req, res) => {
   const id = parseInt(req.params.id);
 
@@ -150,6 +164,26 @@ const getSchById = (req, res) => {
   );
 };
 
+const searchByStation = (req, res) => {
+  const s = req.body.s;
+  const d = req.body.d;
+
+  pool.query(
+    "SELECT t.train_id,t.train_name,st.station_name as source,stt.station_name as destination,s.avail_seat,s.start_time,s.end_time,t.cost,s.sch_id FROM trains t,train_schedules s,stations st,stations stt where t.train_id=s.train_id and s.source = st.station_id and s.destination = stt.station_id and st.station_name= $1 and stt.station_name = $2",
+    [s, d],
+    (error, results) => {
+      if (error) {
+        return res.status(400).json({
+          success: false,
+          error: error.name,
+          message: error.message,
+        });
+      }
+      res.status(200).send(results.rows);
+    }
+  );
+};
+
 module.exports = {
   getTrains,
   getTrainById,
@@ -159,4 +193,6 @@ module.exports = {
   deleteTrain,
   getSchById,
   decSeat,
+  searchByStation,
+  getStations,
 };
