@@ -6,6 +6,43 @@
   background-size: cover;
 }
 
-.home{
+.home {
   background: rgba(238, 238, 238, 0.857);
+  min-height: 100vh;
+  margin-top: 100px;
+  /* background-color: #484848 */
+}
+
+.inputs{
+  display: flex;
+  flex-direction: column !important;
+  align-items: center;
+  justify-content: center !important;
+  min-width: 300px;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.from>span,.to>span{
+  font-size: 20px !important;
+  margin-right: 1rem;
+}
+
+select{
+  padding: 5px 3px !important;
+  background-color: white;
+  outline: none;
+  width: 200px;
+  /* border: none; */
+}
+
+.search>button{
+  padding: 10px 15px ;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  background-color: rgb(34, 95, 34);
+  color: white ;
+  font-weight: 600;
 }

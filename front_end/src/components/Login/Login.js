@@ -5,7 +5,6 @@ import { UserContext } from '../../context';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-
 export default function Login() {
   const { userid, setuserId } = useContext(UserContext);
   const [username, setusername] = useState('');
@@ -40,7 +39,7 @@ export default function Login() {
         return navigate('/book');
       })
       .catch((err) => {
-        console.log(err);
+        alert('Authentication Failed');
         stoploading();
       });
   };

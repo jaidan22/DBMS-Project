@@ -66,7 +66,7 @@ const BookCard = ({ props }) => {
                     Seat Availability :
                     {avail_seat > 0
                       ? ` GN ${avail_seat}`
-                      : ' WL' + avail_seat * -1 + 1}
+                      : ' WL' + parseInt(avail_seat * -1 + 1)}
                   </p>
                 </div>
               </Card.Text>

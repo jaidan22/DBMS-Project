@@ -5,7 +5,9 @@ import { Button } from 'react-bootstrap';
 import axios from 'axios';
 
 const PassengerCard = (props) => {
-  const { name, seat_no, p_id, train_id, source, destination } = props.props;
+  const { name, seat_no, p_id, train_id, source, destination, sch_id } =
+    props.props;
+  // console.log(props.props);
   const loadRef = useRef();
 
   const loading = () => {
@@ -26,7 +28,11 @@ const PassengerCard = (props) => {
         p_id,
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
+        axios.put(`${process.env.REACT_APP_API_URL}/incseat`, {
+          id: sch_id,
+        });
+        window.location.reload();
         stoploading();
       })
       .catch((err) => {
@@ -49,7 +55,9 @@ const PassengerCard = (props) => {
                 <Card.Title>{name}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">
                   PNR : {p_id} | Seat No :{' '}
-                  {seat_no > 0 ? ` GN ${seat_no}` : ' WL' + seat_no * -1 + 1}
+                  {seat_no > 0
+                    ? ` GN ${seat_no}`
+                    : ' WL' + parseInt(seat_no * -1 + 1)}
                 </Card.Subtitle>
               </div>
               <Card.Text>
